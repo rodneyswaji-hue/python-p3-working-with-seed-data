@@ -1,19 +1,11 @@
-#!/usr/bin/env python3
-
-from faker import Faker
-import random
+import ipdb
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 from models import Game
 
-fake = Faker()
+engine = create_engine('sqlite:///games.db', echo=False)
+Session = sessionmaker(bind=engine)
+session = Session()
 
-if __name__ == '__main__':
-    
-    engine = create_engine('sqlite:///seed_db.db')
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-
-    import ipdb; ipdb.set_trace()
+print("Starting ipdb shell. Access `session` to query the database.")
+ipdb.set_trace()
